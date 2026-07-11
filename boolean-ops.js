@@ -6,16 +6,24 @@
  */
 (function registerBooleanOps()
 {
-    if (window.Draw == null || typeof window.Draw.loadPlugin !== 'function')
+    var hostWindow = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+
+    if (hostWindow.Draw == null || typeof hostWindow.Draw.loadPlugin !== 'function')
     {
         window.setTimeout(registerBooleanOps, 10);
         return;
     }
 
-    window.Draw.loadPlugin(function(ui)
+    hostWindow.Draw.loadPlugin(function(ui)
     {
     'use strict';
 
+    var mxResources = hostWindow.mxResources;
+    var mxUtils = hostWindow.mxUtils;
+    var mxConstants = hostWindow.mxConstants;
+    var mxscript = hostWindow.mxscript;
+    var Menu = hostWindow.Menu;
+    var pageDocument = hostWindow.document;
     var PAPER_URL = 'https://cdn.jsdelivr.net/npm/paper@0.12.18/dist/paper-full.min.js';
     var paperLoading = false;
     var paperCallbacks = [];
@@ -215,7 +223,7 @@
             });
 
             var scope = new paper.PaperScope();
-            scope.setup(document.createElement('canvas'));
+            scope.setup(pageDocument.createElement('canvas'));
 
             try
             {
