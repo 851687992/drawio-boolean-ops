@@ -4,8 +4,16 @@
  * MVP scope: unrotated rectangles, ellipses, rhombi, and triangles that
  * share the same parent. Results are inserted as scalable SVG image cells.
  */
-Draw.loadPlugin(function(ui)
+(function registerBooleanOps()
 {
+    if (window.Draw == null || typeof window.Draw.loadPlugin !== 'function')
+    {
+        window.setTimeout(registerBooleanOps, 10);
+        return;
+    }
+
+    window.Draw.loadPlugin(function(ui)
+    {
     'use strict';
 
     var PAPER_URL = 'https://cdn.jsdelivr.net/npm/paper@0.12.18/dist/paper-full.min.js';
@@ -322,4 +330,5 @@ Draw.loadPlugin(function(ui)
         menu.addSeparator(parent);
         ui.menus.addSubmenu('booleanOperations', menu, parent);
     };
-});
+    });
+})();
