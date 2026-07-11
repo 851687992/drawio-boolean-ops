@@ -11,19 +11,31 @@ Experimental Boolean path operations plugin for the diagrams.net/draw.io web edi
 
 The plugin adds `Arrange > Boolean Operations` to the web editor.
 
-## Install in diagrams.net
+## Install in the official web editor
 
-1. Open [app.diagrams.net](https://app.diagrams.net/?splash=0).
-2. Select `Extras > Plugins`.
-3. Click `Add`, choose the custom/external plugin option, and enter:
+The hosted editor blocks arbitrary third-party plugin URLs by default. Use a
+userscript manager to load this plugin in `app.diagrams.net`:
 
-   ```text
-   https://851687992.github.io/drawio-boolean-ops/boolean-ops.js
-   ```
+1. Install [Tampermonkey](https://www.tampermonkey.net/) in the browser.
+2. Open the [userscript installer](https://851687992.github.io/drawio-boolean-ops/boolean-ops.user.js).
+3. Confirm `Install` in Tampermonkey.
+4. Open or reload [app.diagrams.net](https://app.diagrams.net/?splash=0).
+5. Look for `Arrange > Boolean Operations`.
 
-4. Click `Apply` and reload the editor tab.
+The userscript runs only on `https://app.diagrams.net/*`. It loads Paper.js
+0.12.18 and the plugin source before registering the menu commands.
 
-Plugins are supported by the diagrams.net web editor and self-hosted Docker version. They are not supported by draw.io Desktop or the Confluence/Jira integrations.
+## Install in a self-hosted editor
+
+For a self-hosted diagrams.net deployment configured with
+`ALLOW_CUSTOM_PLUGINS = true`, add this URL in `Extras > Plugins > Custom`:
+
+```text
+https://851687992.github.io/drawio-boolean-ops/boolean-ops.js
+```
+
+The plugin is not supported by draw.io Desktop or the Confluence/Jira
+integrations.
 
 ## Use
 
