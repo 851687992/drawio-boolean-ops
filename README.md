@@ -11,10 +11,25 @@ Experimental Boolean path operations plugin for the diagrams.net/draw.io web edi
 
 The plugin adds `Arrange > Boolean Operations` to the web editor.
 
+## Install as a Chrome extension (recommended)
+
+This method uses locally bundled scripts and does not require Tampermonkey.
+
+1. Download and extract `drawio-boolean-ops-chrome-extension.zip`, or use the
+   `chrome-extension` directory from this repository.
+2. Open `chrome://extensions/` in Chrome.
+3. Enable `Developer mode`.
+4. Click `Load unpacked` and select the extracted extension directory.
+5. Close all open `app.diagrams.net` tabs and reopen the editor.
+6. Look for `Arrange > Boolean Operations`.
+
+The extension is restricted to `https://app.diagrams.net/*`. Paper.js Core and
+the plugin are bundled locally, so no executable code is downloaded at runtime.
+
 ## Install in the official web editor
 
-The hosted editor blocks arbitrary third-party plugin URLs by default. Use a
-userscript manager to load this plugin in `app.diagrams.net`:
+The hosted editor blocks arbitrary third-party plugin URLs by default. The
+Tampermonkey userscript is retained as an alternative installation method:
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/) in the browser.
 2. Open the [userscript installer](https://851687992.github.io/drawio-boolean-ops/boolean-ops.user.js).

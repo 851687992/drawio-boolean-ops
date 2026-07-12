@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Draw.io Boolean Operations",
+  "version": "0.1.0",
+  "description": "Adds Union, Subtract, Intersect, and Exclude to app.diagrams.net.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.diagrams.net/*"
+      ],
+      "js": [
+        "paper-core.min.js",
+        "boolean-ops.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}
