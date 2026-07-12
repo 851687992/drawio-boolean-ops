@@ -66,6 +66,7 @@ For Subtract, the bottommost selected shape is the base and all shapes above it 
 Supported:
 
 - Rectangle and rounded rectangle
+- Empty Draw.io label shapes without an image, treated as rectangles
 - Circle and ellipse
 - Rhombus
 - Triangle

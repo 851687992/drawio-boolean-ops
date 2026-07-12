@@ -13,7 +13,7 @@ assert(fs.existsSync(manifestPath), 'chrome-extension/manifest.json must exist')
 
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 assert.strictEqual(manifest.manifest_version, 3);
-assert.strictEqual(manifest.version, '0.1.0');
+assert.strictEqual(manifest.version, '0.1.1');
 assert.strictEqual(manifest.content_scripts.length, 1);
 
 const contentScript = manifest.content_scripts[0];
@@ -40,6 +40,14 @@ assert(
 assert(
   pluginSource.includes('parent.getIndex(a) - parent.getIndex(b)'),
   'plugin must sort selected cells through their common parent'
+);
+assert(
+  pluginSource.includes("shape === 'label'"),
+  'empty Draw.io label shapes must be handled as rectangles'
+);
+assert(
+  pluginSource.includes('mxConstants.STYLE_IMAGE'),
+  'image-backed label shapes must remain unsupported'
 );
 const actions = new Map();
 const menus = new Map([['arrange', { funct() {} }]]);

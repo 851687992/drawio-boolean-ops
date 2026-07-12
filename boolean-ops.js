@@ -169,8 +169,17 @@
                 mxUtils.getValue(style, mxConstants.STYLE_DIRECTION,
                     mxConstants.DIRECTION_EAST));
         }
-        else if (shape === mxConstants.SHAPE_RECTANGLE || shape === 'rectangle')
+        else if (shape === mxConstants.SHAPE_RECTANGLE || shape === 'rectangle' ||
+            shape === 'label')
         {
+            var labelImage = mxUtils.getValue(style, mxConstants.STYLE_IMAGE, null);
+
+            if (shape === 'label' && labelImage != null && labelImage !== '' &&
+                labelImage !== mxConstants.NONE)
+            {
+                throw new Error('Image-backed label shapes are not supported.');
+            }
+
             var radius = getRoundedRadius(style, width, height);
             path = radius > 0 ?
                 new scope.Path.Rectangle(rect, new scope.Size(radius, radius)) :
